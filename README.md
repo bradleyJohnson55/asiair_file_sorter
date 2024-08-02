@@ -3,7 +3,7 @@
 This script will take a raw dump of files generated with ASIAir and sort them into a useable directory
 
 This will generate the following directory structure
-
+```
 {astro_project_folder}
 |--Lights
   |--H
@@ -19,7 +19,7 @@ This will generate the following directory structure
 |--PI (pixinsight directory to output batch processing etc)
 |--raw_dump (this is where you should dump all your raw files from ASIAir)
 |--bad_subs 
-
+```
 
 
 Steps:
