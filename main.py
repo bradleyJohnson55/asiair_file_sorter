@@ -8,9 +8,12 @@ SCAN_DIR="raw_dump"
 
 def move_create(f, dir):
     if not os.path.exists(dir):
-        os.makedirs(dir)
+        os.makedirs(dir, mode=0o777, exist_ok=True)
 
     shutil.move(f, dir)
+    # set permissions
+    file_name = f.split('/')[-1]
+    os.chmod(f"{dir}/{file_name}", 0o0777)
 
 
 def get_filter(f):
@@ -50,23 +53,23 @@ def init_project_structure(p):
 
     # make Lights folder
     if not os.path.exists(f"{p}/Lights"):
-        os.makedirs(f"{p}/Lights")
+        os.makedirs(f"{p}/Lights", mode=0o777, exist_ok=True)
 
     # make Flats folder
     if not os.path.exists(f"{p}/Flats"):
-        os.makedirs(f"{p}/Flats")
+        os.makedirs(f"{p}/Flats", mode=0o777, exist_ok=True)
     
     # make PI folder
     if not os.path.exists(f"{p}/PI"):
-        os.makedirs(f"{p}/PI")
+        os.makedirs(f"{p}/PI", mode=0o777, exist_ok=True)
 
     # make bad_subs folder
     if not os.path.exists(f"{p}/bad_subs"):
-        os.makedirs(f"{p}/bad_subs")
+        os.makedirs(f"{p}/bad_subs", mode=0o777, exist_ok=True)
 
     # make raw_dump folder
     if not os.path.exists(f"{p}/raw_dump"):
-        os.makedirs(f"{p}/raw_dump")
+        os.makedirs(f"{p}/raw_dump", mode=0o777, exist_ok=True)
 
 def main():
     project = input('Enter the name of the project directory: ')
