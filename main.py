@@ -5,6 +5,7 @@ import config
 
 HOME_DIRECTORY = config.HOME_DIRECTORY
 SCAN_DIR="raw_dump"
+FILTERS = ['S', 'H', 'O', 'R', 'G', 'B', 'L']
 
 def move_create(f, dir):
     if not os.path.exists(dir):
@@ -70,6 +71,11 @@ def init_project_structure(p):
     # make raw_dump folder
     if not os.path.exists(f"{p}/raw_dump"):
         os.makedirs(f"{p}/raw_dump", mode=0o777, exist_ok=True)
+
+    # make subframe selector folders
+    for filter in FILTERS:
+        if not os.path.exists(f"{p}/subframes/{filter}"):
+            os.makedirs(f"{p}/subframes/{filter}", mode=0o777, exist_ok=True)
 
 def main():
     project = input('Enter the name of the project directory: ')
