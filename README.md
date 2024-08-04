@@ -19,6 +19,10 @@ This will generate the following directory structure
 |--PI (pixinsight directory to output batch processing etc)
 |--raw_dump (this is where you should dump all your raw files from ASIAir)
 |--bad_subs 
+|--subframes
+  |--S
+  |--H
+  |--...
 ```
 
 
