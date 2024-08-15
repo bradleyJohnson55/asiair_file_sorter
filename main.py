@@ -13,10 +13,16 @@ FILTERS = ['S', 'H', 'O', 'R', 'G', 'B', 'L']
 def move_create(f, dir):
     if not os.path.exists(dir):
         os.makedirs(dir, mode=0o777, exist_ok=True)
-
-    shutil.move(f, dir)
-    # set permissions
+    
     file_name = f.split('/')[-1]
+
+    # file already exists at target location
+    if os.path.exists(f"{dir}/{file_name}"):
+        return
+    
+    shutil.move(f, dir)
+    
+    # set permissions
     os.chmod(f"{dir}/{file_name}", 0o0777)
 
 
